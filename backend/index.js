@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 
@@ -14,13 +15,13 @@ const path = require("path");
 dotenv.config();
 
 mongoose.connect(
-  process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  },
-  () => {
-    console.log("Connected to MongoDB");
-  }
+	process.env.MONGO_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	},
+	() => {
+		console.log("Connected to MongoDB");
+	}
 );
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
@@ -35,23 +36,22 @@ app.use(morgan("common")); // Logger - https://expressjs.com/en/resources/middle
 
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-})
+	destination: (req, file, cb) => {
+		cb(null, "public/images");
+	},
+	filename: (req, file, cb) => {
+		cb(null, req.body.name);
+	},
+});
 
-// Upload file
 const upload = multer({storage});
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  try {
-    return res.status(200).json("File uploaded successfully!");
-  } catch (err) {
-    console.error(err);
-  }
-})
+	try {
+		return res.status(200).json("File upload successfully");
+	} catch (error) {
+		console.log(error);
+	}
+});
 
 // Routes
 app.use("/api/auth", authRoute);
@@ -59,5 +59,5 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 
 app.listen(8800, () => {
-  console.log("Backend server is running!");
+	console.log("Backend server is running!");
 });
