@@ -7,6 +7,9 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const multer = require("multer");
+const path = require("path");
+
 
 dotenv.config();
 
@@ -20,6 +23,8 @@ mongoose.connect(
   }
 );
 
+app.use("/images", express.static(path.join(__dirname, "public/images")));
+
 //middleware
 app.use(express.json()); // To recognise incoming request objects as JSON - https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded#:~:text=a.,application%20using%20the%20code%3A%20app.
 
@@ -27,6 +32,26 @@ app.use(helmet()); // Helmet helps you secure your Express apps by setting vario
 
 app.use(morgan("common")); // Logger - https://expressjs.com/en/resources/middleware/morgan.html
 // Logger of form - :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length]
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+})
+
+// Upload file
+const upload = multer({storage});
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  try {
+    return res.status(200).json("File uploaded successfully!");
+  } catch (err) {
+    console.error(err);
+  }
+})
 
 // Routes
 app.use("/api/auth", authRoute);

@@ -5,18 +5,19 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import Topbar from "../../components/topbar/Topbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
+    const username = useParams().username;
 
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users?username=Joey`);
+            const res = await axios.get(`/users?username=${username}`);
             setUser(res.data);
         }
         fetchUser();
-        console.log(user);
     }, [])
     return (
         // Fragments (For a component to return multiple elements) - https://reactjs.org/docs/fragments.html
@@ -36,7 +37,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profileRightBottom">
-                        <Feed username="Joey"/>
+                        <Feed username={username}/>
                         <Rightbar user={user} />
                     </div>
                 </div>
