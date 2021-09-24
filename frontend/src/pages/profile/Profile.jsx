@@ -18,7 +18,7 @@ export default function Profile() {
             setUser(res.data);
         }
         fetchUser();
-    }, [])
+    }, [username])
     return (
         // Fragments (For a component to return multiple elements) - https://reactjs.org/docs/fragments.html
         <>
