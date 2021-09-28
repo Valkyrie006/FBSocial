@@ -13,9 +13,9 @@ FBSocial is a social media web application which allows users to connect with ea
 - Register and Login Page
 ![Register and Login Page](https://github.com/Valkyrie006/Social-Media-App/blob/master/assets/Register_Login_Page.gif)
 - Home Page
-
+![Home Page](https://github.com/Valkyrie006/Social-Media-App/blob/master/assets/HomePage.png)
 - Profile Page
-
+![Profile Page](https://github.com/Valkyrie006/Social-Media-App/blob/master/assets/ProfilePage.png)
 ## Features
 - Register with your email and username
 - Login using your email
