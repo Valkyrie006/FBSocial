@@ -15,6 +15,8 @@ FBSocial is a social media web application which allows users to connect with ea
 - Home page showing all the content shared by users you follow
 - Profile page showing a user's profile, description, and posts
 
+
+
 ## Tech Stacks Used
 - **Server**
     1. Node Js
