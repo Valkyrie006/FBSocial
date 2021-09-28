@@ -9,8 +9,7 @@
 # FBSocial
 FBSocial is a social media web application which allows users to connect with each others by sharing their thoughts, photos and following their friends
 
-![Register](https://github.com/Valkyrie006/Social-Media-App/blob/master/assets/Register_Login_Page.gif)
-<img src="/assets/Register_Login_Page.gif" alt="Register_Login_Page" height="50%" width="50%" />
+![Register and Login Page](https://github.com/Valkyrie006/Social-Media-App/blob/master/assets/Register_Login_Page.gif)
 
 ## Features
 - Register with your email and username
