@@ -7,7 +7,7 @@
 ![Material UI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
 
 # FBSocial
-FBSocial is a social media web application which allows users to connect with each others by sharing their thoughts, photos and following their friends
+FBSocial is a social media web application that allows users to connect with each other by sharing their thoughts, photos and following their friends
 
 ## Pages
 - Register and Login Page
